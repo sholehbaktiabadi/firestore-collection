@@ -4,7 +4,10 @@
   "description": "store data into firestore",
   "main": "app.ts",
   "scripts": {
-    "dev": "nodemon src/app.ts"
+    "build": "rimraf ./dist && tsc",
+    "dev": "nodemon src/app.ts",
+    "prod": "ts-node ./dist/app.js",
+    "pm2": "pm2 start pm2.config.json"
   },
   "author": "sholehbaktiabadi",
   "license": "ISC",

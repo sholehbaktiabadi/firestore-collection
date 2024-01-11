@@ -21,6 +21,7 @@ export class FirestoreService {
       await document.set(dto);
       response(ctx, "write success");
     } catch (error) {
+        console.log(error)
       response(ctx, "write failed", 500);
     }
   }

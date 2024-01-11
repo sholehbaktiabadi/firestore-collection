@@ -1,0 +1,10 @@
+{
+    "apps": [
+        {
+            "name": "firestore-collection",
+            "script" : "npm run prod",
+            "instances": 1,
+            "autorestart": true
+        }
+    ]
+  }
