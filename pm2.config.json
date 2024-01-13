@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "firestore-collection",
+            "name": "firestore_collection",
             "script" : "npm run prod",
             "instances": 1,
             "autorestart": true
