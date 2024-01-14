@@ -14,10 +14,20 @@ $ npm install
 
 ```bash
 # watch mode (development)
-$ npm run start:dev
+$ npm run dev
 
 # production mode
 $ npm run build
 $ npm run prod
+
+# production mode (pm2)
+$ npm run build
+$ npm run pm2
+```
+
+## Running with Docker
+
+```bash
+$ docker-compose up
 ```
 <br>
