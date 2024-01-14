@@ -4,18 +4,24 @@
   "description": "store data into firestore",
   "main": "app.ts",
   "scripts": {
-    "dev": "nodemon src/app.ts"
+    "build": "rimraf ./dist && tsc",
+    "dev": "nodemon src/app.ts",
+    "prod": "ts-node ./dist/app.js",
+    "pm2": "pm2 start pm2.config.json"
   },
   "author": "sholehbaktiabadi",
   "license": "ISC",
   "dependencies": {
     "@google-cloud/firestore": "^7.1.0",
+    "@koa/cors": "^5.0.0",
+    "joi": "^17.11.0",
     "koa": "^2.15.0",
     "koa-bodyparser": "^4.4.1",
     "koa-router": "^12.0.1"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
+    "@types/koa__cors": "^5.0.0",
     "@types/koa__router": "^12.0.4",
     "@types/koa-bodyparser": "^4.3.12",
     "@types/koa-router": "^7.4.8",

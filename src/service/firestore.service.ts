@@ -1,9 +1,9 @@
 import { Firestore } from "@google-cloud/firestore";
-import { VisitorDto } from "../dto/visitor.dto";
 import type { Context } from "koa";
 import path from "path";
 import env from "../config/env";
 import { response } from "../utils/response";
+import { visitorValidation } from "../dto/visitor.dto";
 
 export class FirestoreService {
   private firestore: Firestore;
@@ -13,15 +13,17 @@ export class FirestoreService {
       keyFilename: path.join(__dirname, env.FIRESTORE_SECRET_PATH),
     });
   }
-  async store(ctx: Context) {
+  async storeVisitor(ctx: Context) {
     try {
-      const dto = ctx.request.body as VisitorDto;
+      const dto = ctx.request.body;
+      const { isPassed, message } = visitorValidation(dto);
+      if (!isPassed) return response(ctx, message, 400);
       const epochTime = Date.now();
       const document = this.firestore.doc(`/visitor/${epochTime}`);
       await document.set(dto);
-      response(ctx, "write success");
+      return response(ctx, "write success");
     } catch (error) {
-      response(ctx, "write failed", 500);
+      return response(ctx, error, 500);
     }
   }
 }
